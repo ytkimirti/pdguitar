@@ -1,0 +1,70 @@
+#N canvas 105 78 656 573 12;
+#X obj 13 12 tgl 15 0 empty empty empty 17 7 0 10 -204786 -1 -1 0 1
+;
+#X msg 13 34 \; pd dsp \$1;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array looperMemory 286650 float 2;
+#X coords 0 1 286650 -1 200 140 1 0 0;
+#X restore 407 183 graph;
+#X obj 132 445 bng 30 250 50 0 empty empty empty 17 7 0 5 -260097 -1
+-1;
+#X obj 132 480 openpanel;
+#X obj 132 531 soundfiler;
+#X obj 13 548 dac~ 1 2;
+#X obj 14 97 bng 30 250 50 0 empty empty empty 17 7 0 10 -4034 -1 -1
+;
+#X obj 62 97 tgl 30 0 empty empty empty 17 7 0 10 -159808 -1 -1 0 1
+;
+#X obj 174 137 spigot;
+#X text 130 424 Select File;
+#X text 42 11 Sound Toggle;
+#X text 14 77 Play;
+#X text 60 75 Loop;
+#X obj 14 137 tabplay~ looperMemory;
+#X obj 14 389 metersingle~;
+#X obj 224 445 bng 30 250 50 0 empty empty empty 17 7 0 5 -260097 -1
+-1;
+#X text 219 425 Strum;
+#X msg 132 508 read -resize \$1 looperMemory;
+#X msg 212 481 read -resize test/guitarstrum.wav looperMemory;
+#X obj 271 445 bng 30 250 50 0 empty empty empty 17 7 0 5 -260097 -1
+-1;
+#X text 266 425 Single;
+#X msg 222 531 read -resize test/guitarsingle.wav looperMemory;
+#X obj 325 446 bng 30 250 50 0 empty empty empty 17 7 0 5 -260097 -1
+-1;
+#X text 320 426 Finger;
+#X msg 348 508 read -resize test/guitarfingerstyle.wav looperMemory
+;
+#X obj 14 216 delay~;
+#X obj 83 201 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 83 257 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 14 272 tremolo~;
+#X obj 14 310 reverb~;
+#X obj 93 295 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X connect 0 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 18 0;
+#X connect 7 0 14 0;
+#X connect 8 0 9 1;
+#X connect 9 0 7 0;
+#X connect 14 0 26 0;
+#X connect 14 1 9 0;
+#X connect 15 0 6 0;
+#X connect 15 0 6 1;
+#X connect 16 0 19 0;
+#X connect 18 0 5 0;
+#X connect 19 0 5 0;
+#X connect 20 0 22 0;
+#X connect 22 0 5 0;
+#X connect 23 0 25 0;
+#X connect 25 0 5 0;
+#X connect 26 0 29 0;
+#X connect 27 0 26 1;
+#X connect 28 0 29 1;
+#X connect 29 0 30 0;
+#X connect 30 0 15 0;
+#X connect 31 0 30 1;
